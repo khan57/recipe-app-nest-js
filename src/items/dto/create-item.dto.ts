@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { CreateListingsDto } from './create-listing.dto';
 
 export class CreateItemDto {
   @ApiProperty({
@@ -14,4 +15,9 @@ export class CreateItemDto {
     example: 'Some item name',
   })
   name: string;
+
+  @ApiProperty({
+    type: CreateListingsDto,
+  })
+  listing: CreateListingsDto;
 }
