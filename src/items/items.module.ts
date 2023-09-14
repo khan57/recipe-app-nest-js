@@ -4,10 +4,11 @@ import { ItemsController } from './items.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Item } from './entities/item.entity';
 import { Listing } from './entities/listing.entity';
+import {Comment} from "./entities/comment.entity"
 
 @Module({
   controllers: [ItemsController],
   providers: [ItemsService],
-  imports:[TypeOrmModule.forFeature([Item,Listing])]
+  imports:[TypeOrmModule.forFeature([Item,Listing,Comment])]
 })
 export class ItemsModule {}
