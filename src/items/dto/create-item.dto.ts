@@ -1,8 +1,10 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { CreateListingsDto } from './create-listing.dto';
 import { CreateTagDto } from './create-tag.dto';
+import { IsBoolean } from 'class-validator';
 
 export class CreateItemDto {
+  @IsBoolean()
   @ApiProperty({
     type: Boolean,
     default: true,

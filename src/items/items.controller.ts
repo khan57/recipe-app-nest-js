@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  BadRequestException
 } from '@nestjs/common';
 import { ItemsService } from './items.service';
 import { CreateItemDto } from './dto/create-item.dto';
@@ -22,6 +23,7 @@ export class ItemsController {
 
   @Get()
   findAll() {
+    throw new BadRequestException("Unable to get all items")
     return this.itemsService.findAll();
   }
 
