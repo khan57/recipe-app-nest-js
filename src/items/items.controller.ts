@@ -16,7 +16,8 @@ import { Express } from 'express';
 import { UploadedFile, UseInterceptors } from '@nestjs/common/decorators';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { FileSizeValidator } from 'src/shared/pipes/file-validator.pipe';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiConsumes, ApiTags } from '@nestjs/swagger';
+import { FileUploadDto } from './dto/file-upload.dto';
 @Controller('items')
   @ApiTags("Items")
 export class ItemsController {
@@ -59,8 +60,9 @@ export class ItemsController {
 
   @Post('/upload-receipt-1')
   @UseInterceptors(FileInterceptor('file'))
+  @ApiConsumes('multipart/form-data')
   @UsePipes(new FileSizeValidator())
-  async uploadReceipt1(@UploadedFile() file: Express.Multer.File) {
+  async uploadReceipt1(@UploadedFile() file: Express.Multer.File, @Body() dto : FileUploadDto) {
     console.log(file);
 
     return 'file uploaded successfully';
